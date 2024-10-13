@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from 'vue';
-// Propiedades para recibir los datos del componente padre
+// Propiedades para recibir los datos del componente padre, en este caso slice tareas y
+// metodo borrarTarea
 const props = defineProps(['tareas', 'borrarTarea']);
 </script>
 
@@ -71,8 +72,7 @@ table td:last-child {
 }
 
 table button {
-  padding: 10px 30px;
-  
+  padding: 10px 30px;  
   background-color: #388e3c;
   color: white;
   border: none;

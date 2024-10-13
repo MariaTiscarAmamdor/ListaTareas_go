@@ -2,11 +2,11 @@
 import { ref, defineEmits } from 'vue';
 
 // Propiedades y métodos a usar en el formulario
-const emit = defineEmits(['addTarea']);
+const emit = defineEmits(['addTarea']); //evento personalizado definido con defineEmits
 const newCat = ref('');
 const newDescripcion = ref('');
 
-//metodo para añadir tarea
+//metodo para añadir tarea nueva donde mandamos el valor de categoria y descripcion del formulario
 function addTarea() {
   emit('addTarea', { cat: newCat.value, descripcion: newDescripcion.value });
   newCat.value = '';

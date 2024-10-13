@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import Formulario from './components/Formulario.vue';
 import Tabla from './components/Tabla.vue';
+import Mostrar from './components/Mostrar.vue';
 
 let id = 0;
 
@@ -11,22 +12,22 @@ const tareas = ref([
   { id: id++, texto: 'Learn JavaScript', cat: 'front/back-end', hecho: true },
   { id: id++, texto: 'Learn Vue', cat: 'front-end', hecho: false }
 ]);
-
-function handleAddTarea({ cat, descripcion }) {
+//funcion de añadir tarea al slice tareas 
+function anadirTarea({ cat, descripcion }) {
   tareas.value.push({ id: id++, texto: descripcion, cat: cat, hecho: false });
 }
-
+//funcion de borrar tarea
 function borrarTarea(tarea) {
   tareas.value = tareas.value.filter((t) => t !== tarea);
 }
-
+//funcion para filtrar del slice de tareas según en función del valor de tareaCompletada true/false
 const filtroTareas = computed(() => {
   return tareaCompletada.value
     ? tareas.value.filter((t) => !t.hecho)
     : tareas.value;
 });
-
-function toggleCompleto() {
+//funcion para alternar el valor de tareaCompletada entre true y false.
+function toggleHecho() {
   tareaCompletada.value = !tareaCompletada.value;
 }
 </script>
@@ -37,10 +38,8 @@ function toggleCompleto() {
   </header>
   <main>
     <!--  -->
-    <Formulario @addTarea="handleAddTarea" />
-    <button id="boton_mostrar" @click="toggleCompleto">
-      {{ tareaCompletada ? 'Mostrar todas las tareas' : 'Mostrar tareas sin hacer' }}
-    </button>
+    <Formulario @addTarea="anadirTarea" />
+    <Mostrar :toggleHecho="toggleHecho"/>   
     <!-- directivas para utilizar métodos -->
     <Tabla :tareas="filtroTareas" :borrarTarea="borrarTarea" />
   </main>
@@ -53,25 +52,4 @@ h1 {
   font-size: 3vw;
 }
 
-button {
-  padding: 10px 30px;
-  margin-left: 15px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: fit-content;
-}
-
-button:hover {
-  background-color: #388e3c;
-  transform: scale(1.05);
-}
-#boton_mostrar {
-  margin-left: 10%;
-  background-color: #388e3c;
-}
 </style>
