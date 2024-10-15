@@ -4,8 +4,8 @@ const props = defineProps(['toggleHecho']);
 </script>
 
 <template>
-    <button id="boton_mostrar" @click="toggleHecho">
-        {{ tareaCompletada ? 'Mostrar todas las tareas' : 'Mostrar tareas sin hacer' }}
+    <button id="boton_mostrar" @click="toggleHecho">        
+        {{ toggleHecho ? 'Mostrar tareas sin hacer' : 'Mostrar todas las tareas' }}
     </button>
 </template>
 <style scoped>

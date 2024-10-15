@@ -6,18 +6,17 @@ const props = defineProps(['tareas', 'borrarTarea']);
 </script>
 
 <template>
+  <h2>Lista de tareas</h2>
   <table>
       <thead>
-        <tr>
-          <th>ID</th>
+        <tr>        
           <th>Categoría</th>
           <th>Descripción</th>
           <th>Marcar como Hecha</th>
           <th>Borrar</th>
         </tr>
       </thead>
-      <tr v-for="tarea in tareas" :key="tarea.id">
-        <td><span>{{ tarea.id }}</span></td>
+      <tr v-for="tarea in tareas" :key="tarea.id">     
         <td><span>{{ tarea.cat }}</span></td>
         <td><span>{{ tarea.texto }}</span></td>
         <td><input type="checkbox" v-model="tarea.hecho"></td>
@@ -27,6 +26,11 @@ const props = defineProps(['tareas', 'borrarTarea']);
 </template>
 
 <style scoped>
+h2 {
+  color: #388e3c;
+  text-align: center;
+  font-size: 2vw;
+}
 table {
   margin: 20px auto;
   border-collapse: collapse;

@@ -16,6 +16,7 @@ function addTarea() {
 </script>
 
 <template>
+  
 <form @submit.prevent="addTarea">
       <label for="categoria">Categoría de la Tarea:</label>
       <input id="categoria" v-model="newCat" required placeholder="Escribe una categoría..."
@@ -23,7 +24,7 @@ function addTarea() {
       <label for="description">Descripción de la Tarea:</label>
       <input id="description" v-model="newDescripcion" required placeholder="Describe la tarea..."
         aria-label="Descripción de la Tarea" />
-      <button>Añadir</button>
+      <button>Crear Tarea</button>
     </form>
 </template>
 
