@@ -14,7 +14,10 @@ const props = defineProps({
     <div class="tarjeta_tarea">
         <input type="checkbox" v-model="tarea.hecho">        
         <span><strong>CATEGORÍA:</strong> {{ tarea.cat }}</span>
-        <span><strong>DESCRIPCIÓN:</strong> {{ tarea.texto }}</span>     
+        <span><strong>DESCRIPCIÓN:</strong> {{ tarea.texto }}</span>
+         <!--$ indica que es un método de Vue y no una propiedad o método personalizado.        
+        Si se intenta llamar a emit sin el prefijo $, Vue no lo reconocería como un método del framework
+         y buscaría una función llamada emit en el contexto actual del componente  -->
         <button @click="$emit('borrarTareaTarjeta', tarea.id)"><img src="../assets/basura.png"></button>
     </div>
 </template>
